@@ -90,14 +90,14 @@ export default function PublicHeader() {
 
             <div className="mt-4 flex flex-col gap-3 border-t border-slate-100 pt-4">
               <Link
-                href="/login"
+                href="/signin"
                 className="rounded-lg border border-slate-200 px-4 py-3 text-center text-sm font-semibold text-slate-700"
               >
                 Sign in
               </Link>
 
               <Link
-                href="/register"
+                href="/signup"
                 className="rounded-lg bg-blue-700 px-4 py-3 text-center text-sm font-semibold text-white"
               >
                 Become an Agent
