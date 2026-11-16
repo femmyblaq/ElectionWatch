@@ -1,5 +1,6 @@
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   Search,
   BarChart3,
@@ -13,81 +14,114 @@ const features = [
     icon: Search,
     title: "Election Information",
     description:
-      "Access available election information and relevant electoral documentation.",
+      "Access election information, official documentation, and relevant electoral resources.",
+    image: "/images/election-information.jpeg",
+    href: "/elections",
   },
   {
     icon: Map,
     title: "Polling Unit Visibility",
     description:
-      "Explore Nigeria's electoral geography through states, LGAs, wards and polling units.",
+      "Explore Nigeria's electoral structure across states, LGAs, wards, and polling units.",
+    image: "/images/polling-units.jpeg",
+    href: "/polling-units",
   },
   {
     icon: BarChart3,
     title: "Results and Analytics",
     description:
-      "Explore published, verified election results and their associated reporting context.",
+      "Explore published election results and access relevant reporting and analytical information.",
+    image: "/images/election-analytics.jpeg",
+    href: "/results",
   },
   {
     icon: FileSearch,
     title: "Submission Traceability",
     description:
-      "Understand the reporting and verification history of submitted election information.",
+      "Understand how election information is submitted, reviewed, and tracked throughout the process.",
+    image: "/images/submission-tracking.jpeg",
+    href: "/transparency",
   },
 ];
 
 export default function FeaturesSection() {
   return (
-    <section className="bg-white py-24">
+    <section className="bg-slate-50 py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
+        {/* Section Heading */}
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-700">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-700">
               Platform capabilities
             </p>
 
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
               Making election information more accessible.
             </h2>
 
-            <p className="mt-5 leading-8 text-slate-500">
-              Explore the tools designed to support transparent
-              election reporting and public access to information.
+            <p className="mt-5 max-w-xl text-base leading-8 text-slate-500">
+              Discover the tools and resources designed to improve
+              access to election information and support transparent
+              reporting across Nigeria.
             </p>
           </div>
 
           <Link
             href="/elections"
-            className="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900"
+            className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-blue-700 transition-colors hover:text-blue-900"
           >
             Explore elections
             <ArrowRight size={17} />
           </Link>
         </div>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-2">
+        {/* Feature Cards */}
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => {
             const Icon = feature.icon;
 
             return (
-              <div
+              <Link
                 key={feature.title}
-                className="flex gap-5 rounded-2xl border border-slate-200 p-7 transition hover:border-blue-200 hover:bg-blue-50/40"
+                href={feature.href}
+                className="group overflow-hidden rounded-xl border border-slate-200 bg-white transition-colors duration-300 hover:border-blue-300"
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
-                  <Icon size={23} />
+                {/* Image */}
+                <div className="relative h-48 overflow-hidden bg-slate-100">
+                  <Image
+                    src={feature.image}
+                    alt={feature.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
                 </div>
 
-                <div>
-                  <h3 className="text-lg font-bold text-slate-900">
+                {/* Content */}
+                <div className="flex min-h-[245px] flex-col p-6">
+
+                  <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-700">
+                    <Icon size={21} strokeWidth={1.8} />
+                  </div>
+
+                  <h3 className="mt-5 text-lg font-bold text-slate-900">
                     {feature.title}
                   </h3>
 
                   <p className="mt-3 text-sm leading-7 text-slate-500">
                     {feature.description}
                   </p>
+
+                  <div className="mt-auto flex items-center gap-2 pt-6 text-sm font-semibold text-blue-700">
+                    Explore feature
+                    <ArrowRight
+                      size={16}
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    />
+                  </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

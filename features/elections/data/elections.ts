@@ -1,36 +1,38 @@
+
 import type { Election } from "@/types/elections";
 
-// Illustrative records for frontend development only.
-// Replace these with records returned by the Django API.
+// Illustrative records for frontend development.
+// Replace with records returned by the Django API.
+
 export const elections: Election[] = [
   {
-    id: "demo-1",
-    title: "Sample Governorship Election",
-    electionType: "Governorship",
-    date: "2027-03-15",
-    state: "Lagos",
+    id: "election-2027-presidential",
+    title: "2027 Presidential Election",
+    electionType: "Presidential",
+    date: "2027-01-16",
+    state: "National",
     status: "UPCOMING",
     description:
-      "Illustrative election record used to develop the elections interface.",
+      "The presidential election provides eligible Nigerian voters with the opportunity to elect the President and Commander-in-Chief of the Federal Republic of Nigeria.",
   },
   {
-    id: "demo-2",
-    title: "Sample State Assembly Election",
-    electionType: "State Assembly",
-    date: "2027-02-20",
-    state: "Oyo",
-    status: "ONGOING",
+    id: "election-2027-senate",
+    title: "2027 Senate Election",
+    electionType: "Senate",
+    date: "2027-01-16",
+    state: "National",
+    status: "UPCOMING",
     description:
-      "Illustrative election record used to develop the elections interface.",
+      "The senatorial election allows eligible voters to elect representatives to the Senate of the National Assembly across Nigeria's senatorial districts.",
   },
   {
-    id: "demo-3",
-    title: "Sample Local Government Election",
-    electionType: "Local Government",
-    date: "2026-08-10",
-    state: "Kano",
-    status: "COMPLETED",
+    id: "election-2027-house-representatives",
+    title: "2027 House of Representatives Election",
+    electionType: "House of Representatives",
+    date: "2027-01-16",
+    state: "National",
+    status: "UPCOMING",
     description:
-      "Illustrative election record used to develop the elections interface.",
+      "The election allows eligible voters to elect representatives to the Federal House of Representatives across Nigeria's federal constituencies.",
   },
 ];

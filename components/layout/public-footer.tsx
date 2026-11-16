@@ -1,67 +1,196 @@
 
+import Image from "next/image";
 import Link from "next/link";
-import { ShieldCheck, Mail, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight} from "lucide-react";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin
+} from "react-icons/fa";
 
-const now = new Date().getFullYear() 
+const currentYear = new Date().getFullYear();
+
+const footerLinks = {
+  platform: [
+    { label: "Home", href: "/" },
+    { label: "Elections", href: "/elections" },
+    { label: "About Us", href: "/about" },
+  ],
+  account: [
+    { label: "Sign In", href: "/signin" },
+    { label: "Create Account", href: "/signup" },
+    { label: "Agent Registration", href: "/signup" },
+  ],
+  resources: [
+    { label: "How It Works", href: "/about" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
+  ],
+};
+
 export default function PublicFooter() {
   return (
     <footer className="bg-[#08152e] text-white">
-      <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
 
+      {/* Main footer */}
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
+
+        <div className="grid gap-12 border-b border-white/10 pb-14 md:grid-cols-2 lg:grid-cols-5">
+
+          {/* Brand section */}
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600">
-                <ShieldCheck size={25} />
-              </div>
+
+            <Link href="/" className="group inline-flex items-center gap-3">
+
+              {/* <div className="relative h-14 w-14 overflow-hidden rounded-xl border border-white/15 bg-white">
+                <Image
+                  src="/images/ballot-box-photo.png"
+                  alt="ElectionWatch ballot box"
+                  fill
+                  sizes="56px"
+                  className="object-cover"
+                />
+              </div> */}
 
               <div>
-                <p className="font-extrabold">
-                  Election<span className="text-blue-400">Watch</span>
+                <p className="text-xl font-extrabold tracking-tight">
+                  Election<span className="">watch</span>
                 </p>
-                <p className="text-[10px] uppercase tracking-widest text-slate-400">
-                  Transparency Platform
+
+                <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-400">
+                  Electoral Transparency Platform
                 </p>
               </div>
+
             </Link>
 
-            <p className="mt-6 max-w-md text-sm leading-7 text-slate-400">
-              Supporting transparent election monitoring,
-              structured reporting and public accountability
-              through technology.
+            <p className="mt-7 max-w-md text-sm leading-7 text-slate-400">
+              Building confidence in Nigeria's electoral process through
+              transparent election monitoring, structured reporting,
+              reliable information and public accountability.
             </p>
-          </div>
 
-          <div>
-            <h3 className="font-bold">Explore</h3>
+            {/* Social links */}
+            <div className="mt-7 flex items-center gap-3">
+              <p className="mr-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                Follow us
+              </p>
 
-            <div className="mt-5 flex flex-col gap-4 text-sm text-slate-400">
-              <Link href="/" className="hover:text-white">Home</Link>
-              <Link href="/elections" className="hover:text-white">Elections</Link>
-              <Link href="/about" className="hover:text-white">About Us</Link>
+              <Link
+                href="#"
+                aria-label="Facebook"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 text-slate-400 transition hover:border-blue-400 hover:bg-blue-500/10 hover:text-white"
+              >
+                <FaFacebook size={17} />
+              </Link>
+
+              <Link
+                href="#"
+                aria-label="Instagram"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 text-slate-400 transition hover:border-blue-400 hover:bg-blue-500/10 hover:text-white"
+              >
+                <FaInstagram size={17} />
+              </Link>
+
+              <Link
+                href="#"
+                aria-label="LinkedIn"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 text-slate-400 transition hover:border-blue-400 hover:bg-blue-500/10 hover:text-white"
+              >
+                <FaLinkedin size={17} />
+              </Link>
             </div>
           </div>
 
+          {/* Platform links */}
           <div>
-            <h3 className="font-bold">Get Started</h3>
+            <h3 className="text-sm font-bold tracking-wide text-white">
+              Platform
+            </h3>
 
-            <div className="mt-5 flex flex-col gap-4 text-sm text-slate-400">
-              <Link href="/login" className="hover:text-white">Sign In</Link>
-              <Link href="/register" className="hover:text-white">Agent Registration</Link>
-              <Link href="/about" className="hover:text-white">How It Works</Link>
-            </div>
+            <ul className="mt-6 space-y-4">
+              {footerLinks.platform.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-slate-400 transition hover:text-blue-400"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
+
+          {/* Account links */}
+          <div>
+            <h3 className="text-sm font-bold tracking-wide text-white">
+              Get Started
+            </h3>
+
+            <ul className="mt-6 space-y-4">
+              {footerLinks.account.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-slate-400 transition hover:text-blue-400"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h3 className="text-sm font-bold tracking-wide text-white">
+              Resources
+            </h3>
+
+            <ul className="mt-6 space-y-4">
+              {footerLinks.resources.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-slate-400 transition hover:text-blue-400"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
 
-        <div className="mt-14 flex flex-col justify-between gap-5 border-t border-white/10 pt-7 text-xs text-slate-500 sm:flex-row">
-          <p>
-            © {now} ElectionWatch. All rights reserved.
+        {/* Bottom footer */}
+        <div className="flex flex-col justify-between gap-6 pt-8 sm:flex-row sm:items-center">
+
+          <p className="text-xs leading-6 text-slate-500">
+            © {currentYear} ElectionWatch. All rights reserved.
           </p>
 
-          <p>
-            Built to support transparency and accountability.
-          </p>
+          <div className="flex flex-wrap items-center gap-5 text-xs text-slate-500">
+            <Link href="/privacy" className="transition hover:text-white">
+              Privacy
+            </Link>
+
+            <Link href="/terms" className="transition hover:text-white">
+              Terms
+            </Link>
+
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-1 transition hover:text-white"
+            >
+              About ElectionWatch
+              <ArrowUpRight size={13} />
+            </Link>
+          </div>
+
         </div>
+
       </div>
     </footer>
   );
