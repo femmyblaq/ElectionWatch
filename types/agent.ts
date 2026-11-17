@@ -7,7 +7,22 @@ export type AgentApplicationStatus =
   | "APPROVED"
   | "REJECTED";
 
-export type AgentProfile = {
+export type AgentUser = {
+  id: string;
+  fullName: string;
+  email: string;
+  phoneNumber?: string;
+  role: "AGENT";
+  applicationStatus: AgentApplicationStatus;
+};
+
+export type SignupPayload = {
+  fullName: string;
+  email: string;
+  password: string;
+};
+
+export type AgentVerificationPayload = {
   fullName: string;
   email: string;
   phoneNumber: string;
@@ -15,6 +30,13 @@ export type AgentProfile = {
   state: string;
   lga: string;
   ward: string;
-  organization: string;
-  membershipNumber: string;
+  organization?: string;
+  membershipNumber?: string;
+  documents: {
+    passport: File | null;
+    votersCard: File | null;
+    membershipCard: File | null;
+    additionalId: File | null;
+  };
+  consent: boolean;
 };
