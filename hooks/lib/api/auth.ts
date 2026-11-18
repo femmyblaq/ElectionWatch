@@ -7,14 +7,13 @@ const MOCK_API =
 const STORAGE_KEY = "electionwatch_demo_agent";
 
 function saveDemoAgent(agent: AgentUser) {
-  sessionStorage.setItem(STORAGE_KEY, JSON.stringify(agent));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(agent));
 }
 
 export function getCurrentAgent(): AgentUser | null {
   if (typeof window === "undefined") return null;
 
-  const stored = sessionStorage.getItem(STORAGE_KEY);
-
+  const stored = localStorage.getItem(STORAGE_KEY);
   if (!stored) return null;
 
   try {
@@ -28,11 +27,9 @@ export function updateCurrentAgent(
   updates: Partial<AgentUser>
 ): AgentUser | null {
   const current = getCurrentAgent();
-
   if (!current) return null;
 
   const updated = { ...current, ...updates };
-
   saveDemoAgent(updated);
 
   return updated;

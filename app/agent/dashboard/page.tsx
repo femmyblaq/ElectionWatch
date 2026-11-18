@@ -59,7 +59,8 @@ export default function AgentDashboardPage() {
   ];
 
   function logout() {
-    sessionStorage.removeItem("electionwatch_demo_agent");
+    // sessionStorage.removeItem("electionwatch_demo_agent");
+    localStorage.removeItem("electionwatch_demo_agent");
     router.replace("/signin");
   }
 

@@ -7,6 +7,12 @@ export type AgentApplicationStatus =
   | "APPROVED"
   | "REJECTED";
 
+export type AgentReviewStatus =
+  | "UNDER_REVIEW"
+  | "APPROVED"
+  | "REJECTED"
+  | "REQUIRES_CORRECTION";
+
 export type AgentUser = {
   id: string;
   fullName: string;
@@ -32,11 +38,38 @@ export type AgentVerificationPayload = {
   ward: string;
   organization?: string;
   membershipNumber?: string;
+
   documents: {
     passport: File | null;
     votersCard: File | null;
     membershipCard: File | null;
     additionalId: File | null;
   };
+
   consent: boolean;
+};
+
+export type AgentApplication = {
+  id: string;
+  agentId: string;
+  fullName: string;
+  email: string;
+  phoneNumber: string;
+  state: string;
+  lga: string;
+  ward: string;
+  organization?: string;
+  membershipNumber?: string;
+
+  documents: {
+    passport: string;
+    votersCard: string;
+    membershipCard?: string;
+    additionalId?: string;
+  };
+
+  status: AgentReviewStatus;
+  submittedAt: string;
+  reviewedAt?: string;
+  reviewNote?: string;
 };
