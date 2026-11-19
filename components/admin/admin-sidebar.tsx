@@ -3,10 +3,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
 import {
   LayoutDashboard,
   Users,
   ClipboardCheck,
+  ClipboardList,
   ShieldCheck,
   LogOut,
 } from "lucide-react";
@@ -27,6 +29,11 @@ const navigation = [
     href: "/admin/agents/registered",
     icon: Users,
   },
+  {
+  label: "Polling Unit Assignments",
+  href: "/admin/assignments",
+  icon: ClipboardList,
+},
 ];
 
 export default function AdminSidebar() {

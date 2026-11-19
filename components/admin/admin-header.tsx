@@ -8,6 +8,7 @@ const pageTitles: Record<string, string> = {
   "/admin": "Overview",
   "/admin/agents": "Agent Applications",
   "/admin/agents/registered": "Registered Agents",
+  "/admin/assignments": "Polling Unit Assignments",
 };
 
 export default function AdminHeader() {
